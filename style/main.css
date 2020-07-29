@@ -1,0 +1,131 @@
+/* STEP 1 */
+/*  Сбрасываем отступы у всех тегов и меняем поведение блочной модели */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* STEP 2 */
+/*  Задаем стили для заднего фона и выравниваем блок с карточками по центру экрана и убираем
+    прокрутку заднего фона при скролле */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    background: linear-gradient(45deg, #ffaf00, #bb02ff);
+    background-attachment: fixed;
+}
+
+/* STEP 3 */
+/*  Создаем контейнер в котором будут находится наши карточки, применяем шрифт и центрируем текст.
+    Также центрируем наши карточки по горизонтали и позволяем им при сужении дисплея прыгать вниз
+    и выстраиваться вертикально с помощью flex-wrap: wrap. */
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+/* STEP 4 */
+/*  Далее с помощью псевдокласса :hover при наведении на область контейнера в котором находятся
+    карточки мы размываем их с помощью свойства filter: blur. Уменьшаем их на 10% от размера и делаем
+    их прозразными на 50%.  */
+.container:hover .card {
+    filter: blur(20px);
+    transform: scale(0.9);
+    opacity: 0.5;
+}
+
+/* STEP 5 */
+/*  Создаем саму карточку. Применяем флекс и распологаем элементы по оси Y. Устанавливаем для нее 
+    высоту ширину и отступы между ними. Задаем цвет,закругляем края с помощью border-radius. 
+    Рисуем тень под карточкой с помощью box-shadow. И задаем свойство transition и теперь при 
+    наведении все свойста будут менятся плавно в течении 0.5 сек */
+.card {
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+    height: 420px;
+    margin: 20px;
+
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+/* STEP 6 */
+/*  Применяем к нашей карточке псевдокласс :hover и при наведении на область самой карточки убираем 
+    размытие увеличиваем ее размер на 10% и с помощью свойства opacity возвращаем ей непрозрачность 
+    по умолчанию */
+.container .card:hover {
+    filter: blur(0px);
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* STEP 7 */
+/*  Рисуем полукруг в шапке карточки с помощью clip-path */
+.card__circle {
+    width: 100%;
+    height: 100%;
+
+    clip-path: circle(180px at center 0);
+}
+
+/* STEP 7 */
+/*  Стилизуем наши заголовки в карточках */
+.card__title {
+    color: #fff;
+    font-size: 4.5em;
+    padding: 30px 0;
+}
+
+/* STEP 8 */
+/*  Устанавливаем внутренние оступы для контента внутри карточки */
+.card__content {
+    padding: 20px;
+}
+
+/* STEP 9 */
+/*  Меняем цвет шрифта в теле карточек и устанавливаем отсуп внизу чтобы отодвинуть кнопку */
+.card__text {
+    color: #666;
+    padding-bottom: 20px;
+}
+
+/* STEP 10 */
+/* Стилизуем кнопку. Устанавливаем ей внутренние отсупы. Убираем подчекивание 
+   по умолчанию. Далее цвет и скругление углов. */
+.card__link {
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+}
+
+/* STEP 11 */
+/*  С помощью псевдокласса nth-child мы устанавливаем разные цвета шапки и кнопки для каждой карточки */
+.card:nth-child(1) .card__circle,
+.card:nth-child(1) .card__link {
+    background-color: #ffaf00;
+}
+
+.card:nth-child(2) .card__circle,
+.card:nth-child(2) .card__link {
+    background-color: #da2288;
+}
+
+.card:nth-child(3) .card__circle,
+.card:nth-child(3) .card__link {
+    background-color: #bb02ff;
+}
