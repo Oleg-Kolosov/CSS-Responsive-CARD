@@ -2,7 +2,7 @@
 
 [source](https://www.youtube.com/watch?v=CYf5grrYgis)
 
-[my version]()
+[my version](https://oleg-kolosov.github.io/CSS-Responsive-CARD/)
 
 ### Articles for read
 
